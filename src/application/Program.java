@@ -1,12 +1,15 @@
 package application;
 
+import boardGame.Position;
+
 public class Program {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		System.out.println("first project");
-
+		Position pos = new Position(4, 4);
+		
+		System.out.println(pos);
 	}
 
 }
