@@ -60,19 +60,19 @@ public class King extends ChessPiece {
 		}
 		
 		//DiagonalRight
-		p.setValues(position.getRow() +1, position.getColumn()-1);
-		if(getBoard().positionExists(p) && canMove(p)) {
-			mat[p.getRow()][p.getColumn()] = true;
-		}
-		
-		//DiagonalBellowLeft
 		p.setValues(position.getRow() -1, position.getColumn()+1);
 		if(getBoard().positionExists(p) && canMove(p)) {
 			mat[p.getRow()][p.getColumn()] = true;
 		}
 		
-		//DiagonalBellowRight
+		//DiagonalBellowLeft
 		p.setValues(position.getRow() +1, position.getColumn()+1);
+		if(getBoard().positionExists(p) && canMove(p)) {
+			mat[p.getRow()][p.getColumn()] = true;
+		}
+		
+		//DiagonalBellowRight
+		p.setValues(position.getRow() +1, position.getColumn()-1);
 		if(getBoard().positionExists(p) && canMove(p)) {
 			mat[p.getRow()][p.getColumn()] = true;
 		}
