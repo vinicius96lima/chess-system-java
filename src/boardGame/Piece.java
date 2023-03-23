@@ -3,7 +3,7 @@ package boardGame;
 public abstract class Piece {
 	
 	protected Position position;
-	private Board board;
+	protected Board board;
 	
 	public Piece(Board board) {
 		this.board = board;

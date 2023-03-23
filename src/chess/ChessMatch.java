@@ -2,13 +2,14 @@ package chess;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import boardGame.Board;
 import boardGame.Piece;
 import boardGame.Position;
+import chess.pieces.Bishop;
 import chess.pieces.King;
+import chess.pieces.Pawn;
 import chess.pieces.Rook;
 
 public class ChessMatch {
@@ -209,13 +210,23 @@ public class ChessMatch {
 	
 	private void initialSetup() {
 	
-		placeNewPiece('h', 7, new Rook(board, color.WHITE));
-        placeNewPiece('d', 1, new Rook(board, color.WHITE));
+		placeNewPiece('a', 1, new Rook(board, color.WHITE));
+        placeNewPiece('c', 1, new Bishop(board, color.WHITE));
         placeNewPiece('e', 1, new King(board, color.WHITE));
-        
+        placeNewPiece('f', 1, new Bishop(board, color.WHITE));
+        placeNewPiece('h', 1, new Rook(board, color.WHITE));
+        placeNewPiece('a', 2, new Pawn(board, color.WHITE));
+        placeNewPiece('b', 2, new Pawn(board, color.WHITE));
 
-        placeNewPiece('b', 8, new Rook(board, color.BLACK));
-        placeNewPiece('a', 8, new King(board, color.BLACK));        
+        placeNewPiece('h', 2, new Pawn(board, color.WHITE));
+
+        placeNewPiece('a', 8, new Rook(board, color.BLACK));
+        placeNewPiece('c', 8, new Bishop(board, color.BLACK));
+        placeNewPiece('e', 8, new King(board, color.BLACK));
+        placeNewPiece('f', 8, new Bishop(board, color.BLACK));
+        placeNewPiece('h', 8, new Rook(board, color.BLACK));
+        placeNewPiece('a', 7, new Pawn(board, color.BLACK));
+        placeNewPiece('b', 7, new Pawn(board, color.BLACK));
 	}
 	
 	
