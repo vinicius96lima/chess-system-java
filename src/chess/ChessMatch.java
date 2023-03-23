@@ -11,6 +11,7 @@ import chess.pieces.Bishop;
 import chess.pieces.King;
 import chess.pieces.Knight;
 import chess.pieces.Pawn;
+import chess.pieces.Queen;
 import chess.pieces.Rook;
 
 public class ChessMatch {
@@ -216,25 +217,36 @@ public class ChessMatch {
 		
 		placeNewPiece('b', 1, new Pawn(board, color.WHITE));
 		placeNewPiece('b', 2, new Knight(board, color.WHITE));
-		placeNewPiece('c', 2, new Knight(board, color.WHITE));
 		
+		placeNewPiece('c', 2, new Knight(board, color.WHITE));		
         placeNewPiece('c', 1, new Bishop(board, color.WHITE));
+        
+        placeNewPiece('d', 2, new Queen(board, color.WHITE));		
+        placeNewPiece('d', 1, new Queen(board, color.WHITE));
+        
+        
         placeNewPiece('e', 1, new King(board, color.WHITE));
         placeNewPiece('f', 1, new Bishop(board, color.WHITE));
+        
         placeNewPiece('h', 1, new Rook(board, color.WHITE));
-        
-        
-
         placeNewPiece('h', 2, new Pawn(board, color.WHITE));
 
+        
         placeNewPiece('a', 8, new Rook(board, color.BLACK));
+        placeNewPiece('a', 7, new Pawn(board, color.BLACK));
+        
         placeNewPiece('c', 8, new Bishop(board, color.BLACK));
+        
+        placeNewPiece('b', 7, new Pawn(board, color.BLACK));
+        placeNewPiece('b', 8, new Knight(board, color.BLACK));
+        
+        placeNewPiece('d', 8, new Queen(board, color.BLACK));
+        
         placeNewPiece('e', 8, new King(board, color.BLACK));
         placeNewPiece('f', 8, new Bishop(board, color.BLACK));
         placeNewPiece('h', 8, new Rook(board, color.BLACK));
-        placeNewPiece('a', 7, new Pawn(board, color.BLACK));
-        placeNewPiece('b', 7, new Pawn(board, color.BLACK));
-        placeNewPiece('b', 8, new Knight(board, color.BLACK));
+       
+       
 	}
 	
 	
