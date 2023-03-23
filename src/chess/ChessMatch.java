@@ -113,7 +113,8 @@ public class ChessMatch {
 	//Método para mover as peças
 	
 	private Piece makeMove(Position source, Position target) {
-		Piece p = board.removePiece(source);
+		ChessPiece p = (ChessPiece)board.removePiece(source);
+		p.increaseMoveCount();
 		Piece capturedPiece = board.removePiece(target);
 		board.placePiece(p, target);
 		
@@ -128,8 +129,9 @@ public class ChessMatch {
 	//Método para retroceder as peças.
 	
 	private void undoMove(Position source, Position target, Piece capturedPiece) {
-		Piece p = board.removePiece(target);
-		board.placePiece(p, source);
+		ChessPiece p = (ChessPiece)board.removePiece(target);
+		p.dereaseMoveCount();
+		board.placePiece(p, source);		
 		
 		if(capturedPiece != null) {
 			board.placePiece(capturedPiece, target);
