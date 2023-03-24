@@ -2,13 +2,18 @@ package chess.pieces;
 
 import boardGame.Board;
 import boardGame.Position;
+import chess.ChessMatch;
 import chess.ChessPiece;
 import chess.color;
 
 public class King extends ChessPiece {
-
-	public King(Board board, color colorPiece) {
+	
+	
+	private ChessMatch chessMatch;
+	
+	public King(Board board, color colorPiece, ChessMatch chessMatch) {
 		super(board, colorPiece);
+		this.chessMatch = chessMatch;
 
 	}
 
@@ -16,6 +21,13 @@ public class King extends ChessPiece {
 	public String toString() {
 		return "K";
 	}
+	
+	private boolean testRookCastling(Position position) {
+		ChessPiece p =(ChessPiece)getBoard().piece(position);
+		return p != null && p instanceof Rook && p.getColorPiece() == getColorPiece() && p.getMoveCount() == 0;
+	}
+	
+	
 	
 	private boolean canMove(Position position) {
 		ChessPiece p = (ChessPiece)getBoard().piece(position);
@@ -77,6 +89,32 @@ public class King extends ChessPiece {
 			mat[p.getRow()][p.getColumn()] = true;
 		}
 		
+		// SpecialMoveCastling
+		
+		if(getMoveCount() == 0 && !chessMatch.getCheck()) {
+			// SpecialMove Castlgin kingside Rook
+			Position posRook1 = new Position (position.getRow(), position.getColumn() + 3);
+			if ( testRookCastling(posRook1)) {
+				Position p1 = new Position (position.getRow(), position.getColumn() + 1); // Verificando se a primeira casa está vazia para realizar o movimento.
+				Position p2 = new Position (position.getRow(), position.getColumn() + 2); // Verificando se a primeira casa está vazia para realizar o movimento.
+				if(getBoard().piece(p1) == null && getBoard().piece(p2) == null) {
+					mat [position.getRow()][position.getColumn() + 2] = true;
+				}
+			}			
+		}
+		if(getMoveCount() == 0 && !chessMatch.getCheck()) {
+			// SpecialMove Castlgin kingside Rook
+			Position posRook2 = new Position (position.getRow(), position.getColumn() - 4);
+			if ( testRookCastling(posRook2)) {
+				Position p1 = new Position (position.getRow(), position.getColumn() - 1); // Verificando se a primeira casa está vazia para realizar o movimento.
+				Position p2 = new Position (position.getRow(), position.getColumn() - 2); // Verificando se a primeira casa está vazia para realizar o movimento.
+				Position p3 = new Position (position.getRow(), position.getColumn() - 3); // Verificando se a primeira casa está vazia para realizar o movimento.
+				if(getBoard().piece(p1) == null && getBoard().piece(p2) == null && getBoard().piece(p3) == null) {
+					mat [position.getRow()][position.getColumn() - 2] = true;
+				}
+			}
+		}
+
 		
 		return mat;
 	}
